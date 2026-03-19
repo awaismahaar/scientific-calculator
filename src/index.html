@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Scientific Calculator</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body
+    class="min-h-screen bg-gray-100 flex max-sm:flex-col items-center gap-6 justify-center p-4"
+  >
+    <div class="bg-white rounded-2xl shadow-xl max-w-80 w-full p-4">
+      <!-- Title -->
+      <h1
+        class="text-center text-gray-400 text-xs font-semibold tracking-widest uppercase mb-3"
+      >
+        Scientific Calculator
+      </h1>
+
+      <!-- Display -->
+      <div class="bg-gray-900 rounded-xl px-4 py-3 mb-3">
+        <div
+          id="expression"
+          class="text-gray-500 text-xs text-right h-4 truncate"
+        ></div>
+        <div
+          id="display"
+          class="text-white text-3xl text-right font-light truncate mt-1"
+        >
+          0
+        </div>
+        <div id="error" class="text-red-500 text-xs text-right"></div>
+      </div>
+
+      <!-- Scientific Row 1 -->
+      <div class="grid grid-cols-6 gap-1 mb-1">
+        <button
+          onclick="inputText('factorial')"
+          class="bg-gray-100 hover:bg-gray-200 text-gray-600 text-xs font-medium rounded-lg py-2 transition"
+        >
+          F
+        </button>
+        <button
+          onclick="inputFunc('Math.sin(')"
+          class="bg-gray-100 hover:bg-gray-200 text-gray-600 text-xs font-medium rounded-lg py-2 transition"
+        >
+          sin
+        </button>
+        <button
+          onclick="inputFunc('Math.cos(')"
+          class="bg-gray-100 hover:bg-gray-200 text-gray-600 text-xs font-medium rounded-lg py-2 transition"
+        >
+          cos
+        </button>
+        <button
+          onclick="inputFunc('Math.tan(')"
+          class="bg-gray-100 hover:bg-gray-200 text-gray-600 text-xs font-medium rounded-lg py-2 transition"
+        >
+          tan
+        </button>
+        <button
+          onclick="inputFunc('Math.sqrt(')"
+          class="bg-gray-100 hover:bg-gray-200 text-gray-600 text-xs font-medium rounded-lg py-2 transition"
+        >
+          √
+        </button>
+        <button
+          onclick="inputText('^')"
+          class="bg-gray-100 hover:bg-gray-200 text-gray-600 text-xs font-medium rounded-lg py-2 transition"
+        >
+          ^
+        </button>
+      </div>
+
+      <!-- Main Buttons -->
+      <div class="grid grid-cols-4 gap-2">
+        <!-- Row 1 -->
+        <button
+          onclick="clearAll()"
+          class="bg-red-100 hover:bg-red-200 text-red-500 font-semibold rounded-xl py-3 transition"
+        >
+          AC
+        </button>
+        <button
+          onclick="inputText('(')"
+          class="bg-gray-100 hover:bg-gray-200 text-gray-600 font-semibold rounded-xl py-3 transition"
+        >
+          (
+        </button>
+        <button
+          onclick="inputText(')')"
+          class="bg-gray-100 hover:bg-gray-200 text-gray-600 font-semibold rounded-xl py-3 transition"
+        >
+          )
+        </button>
+        <button
+          onclick="inputText('/')"
+          class="bg-orange-100 hover:bg-orange-200 text-orange-500 font-bold rounded-xl py-3 transition text-lg"
+        >
+          ÷
+        </button>
+
+        <!-- Row 2 -->
+        <button
+          onclick="inputText('7')"
+          class="bg-gray-50 hover:bg-gray-100 text-gray-800 rounded-xl py-3 transition text-lg"
+        >
+          7
+        </button>
+        <button
+          onclick="inputText('8')"
+          class="bg-gray-50 hover:bg-gray-100 text-gray-800 rounded-xl py-3 transition text-lg"
+        >
+          8
+        </button>
+        <button
+          onclick="inputText('9')"
+          class="bg-gray-50 hover:bg-gray-100 text-gray-800 rounded-xl py-3 transition text-lg"
+        >
+          9
+        </button>
+        <button
+          onclick="inputText('*')"
+          class="bg-orange-100 hover:bg-orange-200 text-orange-500 font-bold rounded-xl py-3 transition text-lg"
+        >
+          ×
+        </button>
+
+        <!-- Row 3 -->
+        <button
+          onclick="inputText('4')"
+          class="bg-gray-50 hover:bg-gray-100 text-gray-800 rounded-xl py-3 transition text-lg"
+        >
+          4
+        </button>
+        <button
+          onclick="inputText('5')"
+          class="bg-gray-50 hover:bg-gray-100 text-gray-800 rounded-xl py-3 transition text-lg"
+        >
+          5
+        </button>
+        <button
+          onclick="inputText('6')"
+          class="bg-gray-50 hover:bg-gray-100 text-gray-800 rounded-xl py-3 transition text-lg"
+        >
+          6
+        </button>
+        <button
+          onclick="inputText('-')"
+          class="bg-orange-100 hover:bg-orange-200 text-orange-500 font-bold rounded-xl py-3 transition text-lg"
+        >
+          −
+        </button>
+
+        <!-- Row 4 -->
+        <button
+          onclick="inputText('1')"
+          class="bg-gray-50 hover:bg-gray-100 text-gray-800 rounded-xl py-3 transition text-lg"
+        >
+          1
+        </button>
+        <button
+          onclick="inputText('2')"
+          class="bg-gray-50 hover:bg-gray-100 text-gray-800 rounded-xl py-3 transition text-lg"
+        >
+          2
+        </button>
+        <button
+          onclick="inputText('3')"
+          class="bg-gray-50 hover:bg-gray-100 text-gray-800 rounded-xl py-3 transition text-lg"
+        >
+          3
+        </button>
+        <button
+          onclick="inputText('+')"
+          class="bg-orange-100 hover:bg-orange-200 text-orange-500 font-bold rounded-xl py-3 transition text-lg"
+        >
+          +
+        </button>
+
+        <!-- Row 5 -->
+        <button
+          onclick="inputText('0')"
+          class="bg-gray-50 hover:bg-gray-100 text-gray-800 rounded-xl py-3 transition text-lg"
+        >
+          0
+        </button>
+        <button
+          onclick="inputText('.')"
+          class="bg-gray-50 hover:bg-gray-100 text-gray-800 rounded-xl py-3 transition text-lg"
+        >
+          .
+        </button>
+        <button
+          onclick="backspace()"
+          class="w-full mt-2 bg-gray-100 hover:bg-gray-200 text-gray-500 text-sm font-medium rounded-xl py-2 transition"
+        >
+          ⌫
+        </button>
+        <button
+          onclick="calculate()"
+          class="bg-blue-500 hover:bg-blue-600 text-white font-bold rounded-xl py-3 transition text-xl"
+        >
+          =
+        </button>
+      </div>
+    </div>
+    <div class="space-y-4 max-w-80 w-full">
+      <div
+        class="bg-white rounded-2xl shadow-xl w-full p-4 max-h-52 overflow-y-auto"
+      >
+        <h1
+          class="text-center text-gray-400 text-xs font-semibold tracking-widest uppercase mb-3"
+        >
+          History
+        </h1>
+        <ul id="history-ul">
+          <li class="text-sm text-gray-500 text-center">
+            History Not available!
+          </li>
+        </ul>
+      </div>
+      <button
+        onclick="addVariable()"
+        class="bg-blue-500 w-full hover:bg-blue-600 text-white font-bold rounded-xl py-3 transition text-xl"
+      >
+        Add Variable
+      </button>
+      <button
+        onclick="clearAllHistory()"
+        class="bg-blue-500 w-full hover:bg-blue-600 text-white font-bold rounded-xl py-3 transition text-xl"
+      >
+        Clear History
+      </button>
+    </div>
+
+    <script type="module" src="../dist/js/main.js"></script>
+  </body>
+</html>
