@@ -35,7 +35,9 @@ function replaceValue(expression: string, variables: Record<string, any>) {
 }
 
 function factorial(value: string) {
-  const num = value.split("l")[1]!;
+  const num = value.split("!").find((val) => val !== '');  
+  // console.log(value.split("!"),num);
+  
   let result = 1;
   for (let i = 1; i <= Number(num); i++) {
     result *= i;
@@ -47,7 +49,8 @@ function calculate() {
   if (!newValue) return;
   try {
     let resValue: string = newValue;
-    if (resValue.includes("factorial")) {
+    
+    if (resValue.includes("!")) {
       resValue = factorial(resValue);
     } else {
       if (resValue.includes("^")) resValue = resValue.replace("^", "**");
@@ -99,7 +102,7 @@ function addInHistory(value: string) {
     historyUlEl.innerHTML = "";
   }
   const realValue = value;
-  if (value.includes("factorial")) {
+  if (value.includes("!")) {
     value = factorial(value);
   } else {
     value = replaceValue(value, variables);
@@ -135,6 +138,7 @@ document.addEventListener("keydown", (e) => {
     e.preventDefault();
     inputText("/");
   } else if (e.key === "^") inputText("^");
+  else if (e.key === "!") inputText("!");
   else if (e.key === "Enter" || e.key === "=") {
     e.preventDefault();
     calculate();
